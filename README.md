@@ -9,7 +9,7 @@ An easy way to get started with JavaScript on the command line. [Read more about
 ## Installation
 
 * `git clone git@github.com:rwieruch/node-babel-server.git`
-* `cd node-babel-server`
+* `cd node-babel `
 * `npm install`
 * `npm start`
 * optional: include *.env* in your *.gitignore*
