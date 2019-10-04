@@ -10,3 +10,5 @@
 
 the .vscode folder contains a config for debugging note that the remoteRoot and localRoot are the same since this is a simple system for debugging
 for testing purposes
+
+this configuration is for attaching to already running debugger
