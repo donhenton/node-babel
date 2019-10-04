@@ -27,7 +27,6 @@ class BirtService {
           return response;
       } catch (error) {
           logger.error(error)
-          
           const {response: {status: stCode}} = error;
           if (stCode && stCode === 404) {
             throw new Error("resource not found")
