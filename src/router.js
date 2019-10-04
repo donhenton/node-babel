@@ -43,7 +43,6 @@ router
       let officeId = req.params.officeId;
       try {
         const response = await BirtService.getOffices(officeId);
-        logger.info(response.data)
         return res.status(200).json(response.data);
 
       } catch(e) {
