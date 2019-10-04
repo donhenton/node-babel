@@ -6,7 +6,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import logger from './lib/logger';
 import router from './router';
-import errHandler from './lib/error-handler';
+import errHandler from './lib/general-error-handler';
 //import AuthBasicService from '../lib/auth-basic-service';
 
 const app = express();

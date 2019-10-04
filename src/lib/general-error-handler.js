@@ -1,8 +1,8 @@
 import logger from './logger';
 
 // eslint-disable-next-line no-unused-vars
-const errHandler = (err, req, res, next) => {
-  logger.error('[errHandler] Error object: %o', err);
+const generalErrorHandler = (err, req, res, next) => {
+  logger.error('[generalError] Error object: %o', err);
 
   const statusCode = err.statusCode || 500;
   let messages;
@@ -27,4 +27,4 @@ const errHandler = (err, req, res, next) => {
   next();
 };
 
-export default errHandler;
+export default generalErrorHandler;

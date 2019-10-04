@@ -1,13 +1,17 @@
 import express from 'express';
 import logger from './lib/logger';
- 
- 
+import BirtService from './services/birt-service';
+import asyncHandler from './lib/async-handler'
+
 //import expressAsyncHandler from '../lib/express-async-handler';
 
 
 const methodNotAllowedResponse = (req, res) => {
   logger.debug('[methodNotAllowedResponse]');
-  return res.status(405).json({statusCode: 405, message: 'Method Not Allowed'});
+  return res.status(405).json({
+    statusCode: 405,
+    message: 'Method Not Allowed'
+  });
 };
 
 const router = new express.Router();
@@ -23,18 +27,45 @@ router.route('/').all(methodNotAllowedResponse);
 router
   .route('/ping')
   .head((req, res) => res.sendStatus(200))
-  .get((req, res) => res.status(200).json({message: 'old Cary Grant fine, how you?'}))
+  .get((req, res) => res.status(200).json({
+    message: 'old Cary Grant fine, how you?'
+  }))
+  .all(methodNotAllowedResponse);
+
+//var username = request.params.username;
+router
+  .route('/offices/:officeId')
+  .get(
+
+   async (req, res,next) => {
+      let officeId = req.params.officeId;
+      // const response = BirtService.getOffices(officeId).then( (response) => {
+      //   return res.status(200).json(response.data)
+      // } )  
+
+      const response = await BirtService.getOffices(officeId)
+      return   res.status(200).json(response.data)
+
+ 
+      logger.info(response.data)
+    }
+
+/*
+    asyncHandler(async (req, res,next) => {
+      const appName = req.header('alpha');
+      const userId = req.header('beta');
+      let officeId = req.params.officeId;
+      const response = await BirtService.getOffices(officeId);
+      logger.info(response.data)
+      return res.status(200).json(response);
+
+    })
+    */
+
+  )
   .all(methodNotAllowedResponse);
 
 
 
-  router
-  .route('/offices')
-  .head((req, res) => res.sendStatus(200))
-  .get((req, res) => res.status(200).json({message: 'old Cary Grant fine, how you?'}))
-  .all(methodNotAllowedResponse);
 
-
-
-
-  export default router;
+export default router;

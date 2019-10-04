@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node --inspect=0.0.0.0:9229  src/server.js",
-    "test": "echo \"No test specified\" && exit 0"
+    "start": "export LOG_LEVEL=info && nodemon --exec babel-node --inspect=0.0.0.0:9229  src/server.js",
+    "test": "echo \"No test specified\" && exit 0",
+    "tt": "export LOG_LEVEL=info && nodemon --exec babel-node  tt.js"
   },
   "keywords": [],
   "author": "",
