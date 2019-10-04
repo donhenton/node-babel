@@ -1,5 +1,6 @@
 
 //https://itnext.io/using-async-await-to-write-cleaner-route-handlers-7fc1d91b220b
+//used in the router
 
 const asyncHandler = (fn) => {
    return (req,res,next) => {
