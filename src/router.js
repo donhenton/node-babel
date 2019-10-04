@@ -36,7 +36,7 @@ router
 router
   .route('/offices/:officeId')
   .get(
-
+/*
    async (req, res,next) => {
       let officeId = req.params.officeId;
       // const response = BirtService.getOffices(officeId).then( (response) => {
@@ -46,21 +46,19 @@ router
       const response = await BirtService.getOffices(officeId)
       return   res.status(200).json(response.data)
 
- 
-      logger.info(response.data)
     }
+*/
 
-/*
     asyncHandler(async (req, res,next) => {
       const appName = req.header('alpha');
       const userId = req.header('beta');
       let officeId = req.params.officeId;
       const response = await BirtService.getOffices(officeId);
       logger.info(response.data)
-      return res.status(200).json(response);
+      return res.status(200).json(response.data);
 
     })
-    */
+    
 
   )
   .all(methodNotAllowedResponse);
