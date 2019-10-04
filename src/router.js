@@ -32,22 +32,10 @@ router
   }))
   .all(methodNotAllowedResponse);
 
-//var username = request.params.username;
+
 router
   .route('/offices/:officeId')
   .get(
-/*
-   async (req, res,next) => {
-      let officeId = req.params.officeId;
-      // const response = BirtService.getOffices(officeId).then( (response) => {
-      //   return res.status(200).json(response.data)
-      // } )  
-
-      const response = await BirtService.getOffices(officeId)
-      return   res.status(200).json(response.data)
-
-    }
-*/
 
     asyncHandler(async (req, res,next) => {
       const appName = req.header('alpha');
