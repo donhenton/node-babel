@@ -41,9 +41,15 @@ router
       const appName = req.header('alpha');
       const userId = req.header('beta');
       let officeId = req.params.officeId;
-      const response = await BirtService.getOffices(officeId);
-      logger.info(response.data)
-      return res.status(200).json(response.data);
+      try {
+        const response = await BirtService.getOffices(officeId);
+        logger.info(response.data)
+        return res.status(200).json(response.data);
+
+      } catch(e) {
+        next(e) 
+      }
+      
 
     })
     
