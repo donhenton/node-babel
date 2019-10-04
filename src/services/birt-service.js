@@ -26,13 +26,16 @@ class BirtService {
           const response = await axios.get(endPointUrl, axiosConfig);
           return response;
       } catch (error) {
-          logger.error(error)
+          logger.error(error);
+          let newError = error;
+          newError.notFoundError = false;
           const {response: {status: stCode}} = error;
           if (stCode && stCode === 404) {
-            throw new Error("resource not found")
+            newError = new Error("resource not found");
+            newError.notFoundError = true;
           }
         
-          throw error;
+          throw newError;
       }
   }
  

@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "export LOG_LEVEL=info && nodemon --exec babel-node --inspect=0.0.0.0:9229  src/server.js",
-    "test": "echo \"No test specified\" && exit 0",
-    "tt": "export LOG_LEVEL=info && nodemon --exec babel-node  tt.js"
+    "test": "echo \"No test specified\" && exit 0" 
   },
   "keywords": [],
   "author": "",

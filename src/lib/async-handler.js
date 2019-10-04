@@ -3,7 +3,20 @@
 
 const asyncHandler = (fn) => {
    return (req,res,next) => {
-    Promise.resolve(fn(req,res,next)).catch( (e) => {next(e)})
+    Promise.resolve(fn(req,res,next)).catch( (e) => {
+       
+
+      if(e.notFoundError === true ) {
+         res.status(404).json( {error: "Item not found"})
+      } else {
+         res.status(500).json( JSON.parse(JSON.stringify(e, Object.getOwnPropertyNames(e))))
+      }
+      
+      //use this to punt to html/express err middleware
+      //next(e)
+   
+   
+   })
    }
 
 
